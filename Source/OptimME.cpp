@@ -469,6 +469,9 @@ int main(int argc, char const *argv[]) {
   std::string outputStringMSE ="MSE.dat";
   int limit = 1;
   std::vector<std::string>* restOfTheDocument = new std::vector<std::string>;
+  int intervalToWrite = 10;
+  std::vector<int> dimensionToOptimize; 
+  /* ----------- Fin Initialisation des variables ----------- */
 
   //[> ----------- Fin Initialisation des variables ----------- <]
 
@@ -486,10 +489,17 @@ int main(int argc, char const *argv[]) {
       app.add_option("--integrandType",integrandType,"Type of the integrand to compute MSE : 1|-> HeaviSide, 2|-> SoftEllipses, 3|-> HardEllipses, 4|-> SoftRectangles, 5|-> HardRectangles. Default: "+std::to_string(integrandType));
       app.add_option("-l,--limit",limit,"The limit number behind which we don't modify the points. If left by default, will take every point. Default: "+std::to_string(limit));
       app.add_option("--outputNextStep",outputStringNextStep,"Path to output file fot next step, i.e. with all the 729 points. If left by default, it will not write it. default: "+outputStringNextStep);
+      app.add_option("--writingInterval",intervalToWrite,"Defines at which interval should the pointset be written. Default: "+std::to_string(intervalToWrite));
+      app.add_option("--dimensionToOptimize",dimensionToOptimize,"Specify which dimension to Optimize, default: all");
+
 
       CLI11_PARSE(app, argc, argv)
 
 // Initialisation du nombre d'integrandes en fonction du type d'integrande choisi
+      std::cout << dimensionToOptimize.size() << std::endl;
+      for (auto i : dimensionToOptimize) {
+        std::cout << i << std::endl;
+      }
 
       switch (integrandType) {
         case INTEGRAND_TYPE_HEAVISIDE:
