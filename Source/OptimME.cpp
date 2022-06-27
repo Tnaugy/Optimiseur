@@ -412,6 +412,7 @@ int main(int argc, char const *argv[]) {
   int limit = 1;
   std::vector<std::string>* restOfTheDocument = new std::vector<std::string>;
   int intervalToWrite = 10;
+  std::vector<int> dimensionToOptimize; 
   /* ----------- Fin Initialisation des variables ----------- */
 
   // =========== Début CLI11 Configuration =========== //
@@ -429,9 +430,15 @@ int main(int argc, char const *argv[]) {
       app.add_option("-l,--limit",limit,"The limit number behind which we don't modify the points. If left by default, will take every point. Default: "+std::to_string(limit));
       app.add_option("--outputNextStep",outputStringNextStep,"Path to output file fot next step, i.e. with all the 729 points. If left by default, it will not write it. default: "+outputStringNextStep);
       app.add_option("--writingInterval",intervalToWrite,"Defines at which interval should the pointset be written. Default: "+std::to_string(intervalToWrite));
-      CLI11_PARSE(app, argc, argv)
+      app.add_option("--dimensionToOptimize",dimensionToOptimize,"Specify which dimension to Optimize, default: all");
+
+
 
 // Initialisation du nombre d'integrandes en fonction du type d'integrande choisi
+      std::cout << dimensionToOptimize.size() << std::endl;
+      for (auto i : dimensionToOptimize) {
+        std::cout << i << std::endl;
+      }
 
       switch (integrandType) {
         case INTEGRAND_TYPE_HEAVISIDE:
