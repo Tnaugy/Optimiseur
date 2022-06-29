@@ -34,7 +34,7 @@ endif()
 add_definitions( -DDIM=3 )
 find_package(OpenMP REQUIRED)
 
-set(INTEGRANDS Lib/Integrands/Heaviside/Heaviside2D_nIntegrands1048576_optimSet.cpp Lib/Integrands/Ellipses/SoftEllipses/SoftEllipses2D_nIntegrands524288_optimSet.cpp Lib/Integrands/Ellipses/HardEllipses/Ellipses2D_nIntegrands16384_optimSet.cpp Lib/Integrands/Rectangles/HardRectangles/Rectangles2D_nIntegrands16384_optimSet.cpp Lib/Integrands/Rectangles/SoftRectangles/SoftRectangles2D_nIntegrands16384_optimSet.cpp Lib/Integrands/3D/SoftEllipses/Gauss3D.cpp Lib/Integrands/3D/Heaviside/Heaviside3D.cpp)
+set(INTEGRANDS Lib/Integrands/Heaviside/Heaviside2D_nIntegrands262144_optimSet.cpp Lib/Integrands/Ellipses/SoftEllipses/SoftEllipses2D_nIntegrands524288_optimSet.cpp Lib/Integrands/Ellipses/HardEllipses/Ellipses2D_nIntegrands16384_optimSet.cpp Lib/Integrands/Rectangles/HardRectangles/Rectangles2D_nIntegrands16384_optimSet.cpp Lib/Integrands/Rectangles/SoftRectangles/SoftRectangles2D_nIntegrands16384_optimSet.cpp Lib/Integrands/3D/SoftEllipses/Gauss3D.cpp Lib/Integrands/3D/Heaviside/Heaviside3D.cpp)
 
 add_library(Integrands STATIC ${INTEGRANDS} )
 

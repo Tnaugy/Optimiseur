@@ -23,7 +23,7 @@
 #define INTEGRAND_TYPE_SOFTRECTANGLES 4
 #define INTEGRAND_TYPE_HARDRECTANGLES 5
 
-#define INTEGRAND_TYPE_HEAVISIDE_2D_NUMBER 1048576
+#define INTEGRAND_TYPE_HEAVISIDE_2D_NUMBER 262144
 #define INTEGRAND_TYPE_SOFTELLIPSES_2D_NUMBER 524288
 #define INTEGRAND_TYPE_HARDELLIPSES_2D_NUMBER 16384
 #define INTEGRAND_TYPE_SOFTRECTANGLES_2D_NUMBER 16384
@@ -346,7 +346,7 @@ std::vector<int> randomAccessMatriceGenerator(int nbpts,int limit){
 
 /* ----------- Fonction Principale ----------- */
 template<int dimension>
-double optimPointME(std::vector<Tiles<DIM>>* v,int nbpts,std::string inputString,int niters,int nbThrow,std::string outputString,int gaussianSubSetSize,int integrandType,int limit,std::string outputStringNextStep, std::vector<std::string>* restOfTheDocument){
+double optimPointME(std::vector<Tiles<DIM>>* v,int nbpts,std::string inputString,int niters,int nbThrow,std::string outputString,int gaussianSubSetSize,int integrandType,int limit,std::string outputStringNextStep, std::vector<std::string>* restOfTheDocument, std::vector<int> dimensionToOptimize){
 
   std::default_random_engine generator;
   std::uniform_real_distribution<double> distribution(0.0,1.0);
@@ -555,7 +555,7 @@ int main(int argc, char const *argv[]) {
         //for (auto i : (*v)) {
           //std::cout << i << std::endl;
         //}
-    double val = optimPointME<DIM>(v,nbpts,inputString,niters,nbThrow,outputString,gaussianSubSetSize,integrandType,limit-1,outputStringNextStep,restOfTheDocument);
+    double val = optimPointME<DIM>(v,nbpts,inputString,niters,nbThrow,outputString,gaussianSubSetSize,integrandType,limit-1,outputStringNextStep,restOfTheDocument,dimensionToOptimize);
         // =========== Ecriture de l'erreur associée à un pointset  =========== //
         // std::cout << val << '\n';
     if (outputStringMSE.compare("MSE.dat") != 0) {
